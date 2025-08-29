@@ -20,7 +20,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 w-full z-50 px-6 md:px-12 py-4 flex items-center justify-between bg-white shadow-md transition-all">
       {/* Logo + Brand */}
       <div className="flex items-center space-x-2">
-        <img src={logo} alt="JLY Logo" className="h-10 w-10" />
+        <img src={logo} alt="JLY Logo" className="h-20" />
         <span className="text-blue-700 font-extrabold text-lg leading-tight font-montserrat">
           JLY INTERNATIONAL
         </span>
