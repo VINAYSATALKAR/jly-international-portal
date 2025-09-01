@@ -53,7 +53,7 @@ const TeamPreview = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl md:text-5xl font-extrabold text-blue-800 font-montserrat mb-4">
-            Meet Our Leadership
+            Steering the Ship
           </h2>
           <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
             Our team’s deep industry knowledge and expansive network are leveraged to deliver measurable results for both investors and businesses.
