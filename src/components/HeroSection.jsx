@@ -1,6 +1,8 @@
 // src/components/HeroSection.jsx
+import { useState, useRef } from "react"; // <-- Import useState and useRef
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { FaVolumeUp, FaVolumeMute } from "react-icons/fa"; // <-- Import icons
 
 // Animation variants (these remain the same)
 const containerVariants = {
@@ -26,6 +28,21 @@ const itemVariants = {
 };
 
 const HeroSection = () => {
+  // State to track whether the video is muted
+  const [isMuted, setIsMuted] = useState(true);
+  // Ref to get direct access to the video element
+  const videoRef = useRef(null);
+
+  // Function to toggle mute/unmute
+  const toggleMute = () => {
+    if (videoRef.current) {
+      // Toggle the muted property of the video element
+      videoRef.current.muted = !videoRef.current.muted;
+      // Update the state to reflect the change
+      setIsMuted(!isMuted);
+    }
+  };
+
   return (
     <section
       id="home"
@@ -33,28 +50,27 @@ const HeroSection = () => {
     >
       {/* Background Video & Overlay */}
       <div className="absolute top-0 left-0 w-full h-full z-0">
-        {/* The Video Element */}
         <video
-          src="/hero-video3.mp4" // <-- Path to your video in the 'public' folder
+          ref={videoRef} // <-- Attach the ref to the video element
+          src="/hero-video3.mp4"
           autoPlay
           loop
-          muted
-          playsInline // Important for iOS devices
+          muted // <-- Start muted is REQUIRED for autoplay
+          playsInline
           className="w-full h-full object-cover"
         ></video>
-
-        {/* Dark overlay for text readability, slightly darker for video */}
         <div className="absolute inset-0 bg-black/60"></div>
       </div>
 
-      {/* Animated Content (This part remains the same) */}
+      {/* Animated Content (remains the same) */}
       <motion.div
         className="relative z-10 text-white"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <motion.h1 
+        {/* ... your h1, p, and Link components are here ... */}
+         <motion.h1 
           className="text-4xl md:text-6xl font-extrabold font-montserrat mb-4"
           variants={itemVariants}
         >
@@ -96,6 +112,19 @@ const HeroSection = () => {
           </motion.div>
         </motion.div>
       </motion.div>
+
+      {/* Mute/Unmute Button */}
+      <button
+        onClick={toggleMute}
+        className="absolute bottom-5 right-5 z-20 bg-black/30 text-white p-3 rounded-full hover:bg-black/50 transition-colors"
+        aria-label="Toggle sound"
+      >
+        {isMuted ? (
+          <FaVolumeMute size={20} />
+        ) : (
+          <FaVolumeUp size={20} />
+        )}
+      </button>
     </section>
   );
 };
