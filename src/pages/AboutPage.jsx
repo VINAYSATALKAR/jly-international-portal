@@ -2,9 +2,8 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { FaShieldAlt, FaRocket, FaCheckCircle, FaTimes } from 'react-icons/fa';
-import ProfileCard from '../components/ProfileCard'; // <-- Import the new card
+import ProfileCard from '../components/ProfileCard';
 
-// ... (teamMembers and values data arrays remain the same as before)
 const teamMembers = [
     { name: "Steven Lee", title: "Chairman", imageUrl: "/images/team-steven-lee.jpg", bio: "Steven Lee is a highly respected figure..." },
     { name: "Jocelyn Yambao", title: "Founder & COO", imageUrl: "/images/team-jocelyn-yambao.jpg", bio: "Jocelyn is a highly accomplished executive..." },
@@ -23,8 +22,13 @@ const AboutPage = () => {
   const [selectedMember, setSelectedMember] = useState(null);
 
   const teamSectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: teamSectionRef });
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-65%"]); // Adjust '-65%' based on the number of cards
+  const { scrollYProgress } = useScroll({ 
+    target: teamSectionRef, 
+    offset: ["start start", "end end"] 
+  });
+  
+  // Adjusted percentage for better end-positioning
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]); 
 
   return (
     <>
@@ -80,7 +84,8 @@ const AboutPage = () => {
 
       {/* Slide 4: Horizontal Scrolling Team Section */}
       <section ref={teamSectionRef} className="relative h-[300vh] bg-gray-900">
-        <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
+        {/* === FIX IS HERE: removed "items-center" === */}
+        <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
             <div className="text-center px-6 mb-12">
                 <h2 className="text-4xl md:text-5xl font-extrabold text-white font-montserrat">Meet the Team</h2>
             </div>
@@ -92,12 +97,36 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Bio Modal (remains the same) */}
+      {/* Bio Modal (remember to fill this in) */}
       <AnimatePresence>
         {selectedMember && (
-          <motion.div /* ... modal code ... */ >
-            <motion.div /* ... modal content ... */ >
-                {/* ... same modal content as before ... */}
+          <motion.div
+            className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedMember(null)}
+          >
+            <motion.div 
+              className="bg-white rounded-lg p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <h3 className="text-3xl font-bold text-blue-800">{selectedMember.name}</h3>
+                    <p className="text-orange-500 font-semibold">{selectedMember.title}</p>
+                  </div>
+                  <button onClick={() => setSelectedMember(null)} className="text-gray-500 hover:text-gray-800">
+                      <FaTimes size={24} />
+                  </button>
+              </div>
+              <p className="text-gray-600 whitespace-pre-line">
+                {selectedMember.bio}
+              </p>
             </motion.div>
           </motion.div>
         )}
