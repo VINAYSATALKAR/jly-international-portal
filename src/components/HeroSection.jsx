@@ -52,7 +52,7 @@ const HeroSection = () => {
       <div className="absolute top-0 left-0 w-full h-full z-0">
         <video
           ref={videoRef} // <-- Attach the ref to the video element
-          src="/hero-video3.mp4"
+          src="/hero-video6.mp4"
           autoPlay
           loop
           muted // <-- Start muted is REQUIRED for autoplay
