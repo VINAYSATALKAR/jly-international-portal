@@ -10,6 +10,8 @@ import MembershipPage from "./pages/MembershipPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import EventsPage from "./pages/EventsPage";
 import ContactPage from "./pages/ContactPage";
+import FaqPage from "./pages/FaqPage";
+import TermsPage from "./pages/TermsPage";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="/events" element={<EventsPage/>} />       {/* <-- Uncomment */}
           <Route path="/membership" element={<MembershipPage/>} /> {/* <-- Uncomment */}
           <Route path="/contact" element={<ContactPage/>} />     {/* <-- Uncomment */}
+          <Route path="/faq" element={<FaqPage/>} />     {/* <-- Uncomment */}
+          <Route path="/terms" element={<TermsPage/>} />     {/* <-- Uncomment */}
         </Route>
       </Routes>
     </BrowserRouter>
