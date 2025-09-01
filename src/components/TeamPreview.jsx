@@ -90,12 +90,7 @@ const TeamPreview = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-16"
         >
-          <Link
-            to="/about"
-            className="bg-orange-500 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-orange-600 transition-transform transform hover:scale-105"
-          >
-            View Full Team
-          </Link>
+          
         </motion.div>
       </div>
     </section>

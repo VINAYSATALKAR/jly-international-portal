@@ -1,8 +1,8 @@
 // src/components/HeroSection.jsx
-import { useState, useRef } from "react"; // <-- Import useState and useRef
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaVolumeUp, FaVolumeMute } from "react-icons/fa"; // <-- Import icons
+import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 
 // Animation variants (these remain the same)
 const containerVariants = {
@@ -69,12 +69,13 @@ const HeroSection = () => {
         initial="hidden"
         animate="visible"
       >
-        {/* ... your h1, p, and Link components are here ... */}
-         <motion.h1 
-          className="text-4xl md:text-6xl font-extrabold font-montserrat mb-4"
+        {/* === HEADING UPDATED HERE === */}
+        <motion.h1 
+          className="text-4xl md:text-6xl font-extrabold font-montserrat mb-4 leading-tight"
           variants={itemVariants}
         >
-          Welcome to <span className="text-orange-400">JLY International</span>
+          <span className="block">Welcome to</span>
+          <span className="text-orange-400">JLY International</span>
         </motion.h1>
 
         <motion.p 

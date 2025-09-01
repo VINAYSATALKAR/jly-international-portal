@@ -40,13 +40,13 @@ const ServicesSection = () => {
   const activeService = services.find(s => s.id === activeServiceId) || services[0];
 
   return (
-    <section className="py-24 bg-black" id="services">
+    <section className="py-24 bg-white" id="services">
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
         {/* Left Side (Sticky) */}
         <div className="lg:sticky top-24 ml-4">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white font-montserrat mb-6 ">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-blue-900 font-montserrat mb-6 ">
               A Partnership Designed for Growth
             </h2>
             <AnimatePresence mode="wait">
@@ -57,8 +57,8 @@ const ServicesSection = () => {
                 exit={{ y: -10, opacity: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <h3 className="text-2xl font-bold text-orange-400 mb-3">{activeService.title}</h3>
-                <p className="text-lg text-white/70 min-h-[100px]">
+                <h3 className="text-2xl font-bold text-orange-600 mb-3">{activeService.title}</h3>
+                <p className="text-lg text-blue-800 font-semibold min-h-[100px]">
                   {activeService.description}
                 </p>
               </motion.div>
