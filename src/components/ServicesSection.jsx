@@ -44,9 +44,9 @@ const ServicesSection = () => {
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
         {/* Left Side (Sticky) */}
-        <div className="lg:sticky top-24">
+        <div className="lg:sticky top-24 ml-4">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white font-montserrat mb-6">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white font-montserrat mb-6 ">
               A Partnership Designed for Growth
             </h2>
             <AnimatePresence mode="wait">
@@ -90,3 +90,5 @@ const ServicesSection = () => {
 };
 
 export default ServicesSection;
+
+

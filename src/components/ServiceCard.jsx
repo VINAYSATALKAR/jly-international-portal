@@ -51,3 +51,4 @@ const ServiceCard = ({ icon, title, description, isActive, imageUrl }) => {
 };
 
 export default ServiceCard;
+
