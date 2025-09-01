@@ -1,71 +1,89 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { FaGlobe, FaShieldAlt, FaBriefcase } from "react-icons/fa";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaGlobeAmericas, FaShieldAlt, FaChartLine, FaHandshake } from "react-icons/fa";
+import ServiceCard from './ServiceCard';
 
 const services = [
   {
-    title: "JLY Global Link",
-    description:
-      "Connecting businesses across borders with strategic partnerships and funding opportunities.",
-    icon: <FaGlobe className="text-4xl text-orange-500 mb-4" aria-hidden="true" />,
+    id: 1,
+    icon: <FaHandshake size={32} className="text-orange-400" />,
+    title: "Strategic Partnerships",
+    description: "Forge impactful partnerships to expand market reach and achieve mutual growth.",
+    imageUrl: "/images/partnership.png" // <-- Path to your first image
   },
   {
-    title: "C3Shield",
-    description:
-      "Protecting crypto assets and recovering lost investments with cutting-edge security solutions.",
-    icon: <FaShieldAlt className="text-4xl text-orange-500 mb-4" aria-hidden="true" />,
+    id: 2,
+    icon: <FaChartLine size={32} className="text-orange-400" />,
+    title: "Funding & Investment",
+    description: "Access capital through our network of accredited investors and licensed lenders.",
+    imageUrl: "/images/funding.png" // <-- Path to your second image
   },
   {
-    title: "Wealth Confluence",
-    description:
-      "Empowering financial growth through curated investment strategies and expert guidance.",
-    icon: <FaBriefcase className="text-4xl text-orange-500 mb-4" aria-hidden="true" />,
+    id: 3,
+    icon: <FaGlobeAmericas size={32} className="text-orange-400" />,
+    title: "Family Office Services",
+    description: "Connect with exclusive, high-value opportunities in key sectors like tech and renewable energy.",
+    imageUrl: "/images/family.png" // <-- Path to your third image
+  },
+  {
+    id: 4,
+    icon: <FaShieldAlt size={32} className="text-orange-400" />,
+    title: "C3Shield Crypto Recovery",
+    description: "Reclaim lost crypto assets with advanced blockchain analysis and expertise.",
+    imageUrl: "/images/shield.png" // <-- Path to your fourth image
   },
 ];
 
 const ServicesSection = () => {
-  useEffect(() => {
-    AOS.init({ duration: 800, once: false });
-    AOS.refresh(); // Ensures animation re-triggers on remount
-  }, []);
+  const [activeServiceId, setActiveServiceId] = useState(services[0].id);
+
+  const activeService = services.find(s => s.id === activeServiceId) || services[0];
 
   return (
-    <section className="bg-white py-20 px-6 text-center" id="services">
-      <h2
-        className="text-3xl md:text-4xl font-bold text-blue-700 font-montserrat mb-12"
-        data-aos="fade-down"
-      >
-        Our Services
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {services.map((service, index) => (
-          <div
-            key={index}
-            className="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300"
-            role="region"
-            aria-labelledby={`service-${index}`}
-            data-aos="fade-up"
-            data-aos-delay={index * 100}
-          >
-            {service.icon}
-            <h3
-              id={`service-${index}`}
-              className="text-xl font-semibold font-montserrat text-blue-700 mb-2"
+    <section className="py-24 bg-black" id="services">
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+        {/* Left Side (Sticky) */}
+        <div className="lg:sticky top-24">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white font-montserrat mb-6">
+              A Partnership Designed for Growth
+            </h2>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeService.id}
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -10, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <h3 className="text-2xl font-bold text-orange-400 mb-3">{activeService.title}</h3>
+                <p className="text-lg text-white/70 min-h-[100px]">
+                  {activeService.description}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
+        </div>
+
+        {/* Right Side (Scrolling Cards) */}
+        <div className="flex flex-col gap-16">
+          {services.map((service) => (
+            <motion.div
+              key={service.id}
+              onViewportEnter={() => setActiveServiceId(service.id)}
             >
-              {service.title}
-            </h3>
-            <p className="text-gray-700 font-roboto mb-4">{service.description}</p>
-            <Link
-              to="/services"
-              className="text-orange-500 font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500 rounded"
-              aria-label={`Learn more about ${service.title}`}
-            >
-              Learn More →
-            </Link>
-          </div>
-        ))}
+              <ServiceCard
+                icon={service.icon}
+                title={service.title}
+                description={service.description}
+                isActive={activeServiceId === service.id}
+                imageUrl={service.imageUrl}
+              />
+            </motion.div>
+          ))}
+        </div>
+
       </div>
     </section>
   );
