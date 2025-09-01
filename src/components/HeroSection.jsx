@@ -35,7 +35,7 @@ const HeroSection = () => {
       <div className="absolute top-0 left-0 w-full h-full z-0">
         {/* The Video Element */}
         <video
-          src="/hero-video3.mp4" // <-- Path to your video in the 'public' folder
+          src="/hero-video5.mp4" // <-- Path to your video in the 'public' folder
           autoPlay
           loop
           muted
