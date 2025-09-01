@@ -17,11 +17,6 @@ const teamMembers = [
     name: "Bernard Picot",
     title: "Co-Founder & CRO",
     imageUrl: "/images/team-bernard-picot.jpg"
-  },
-  {
-    name: "Amit Srivastava",
-    title: "Chief Technology Officer",
-    imageUrl: "/images/team-amit-srivastava.jpg"
   }
 ];
 
@@ -66,7 +61,7 @@ const TeamPreview = () => {
         </motion.div>
         
         <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-16"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-16"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
