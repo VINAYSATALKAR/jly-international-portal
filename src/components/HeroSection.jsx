@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 
-// Animation variants (these remain the same)
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -28,17 +27,12 @@ const itemVariants = {
 };
 
 const HeroSection = () => {
-  // State to track whether the video is muted
   const [isMuted, setIsMuted] = useState(true);
-  // Ref to get direct access to the video element
   const videoRef = useRef(null);
 
-  // Function to toggle mute/unmute
   const toggleMute = () => {
     if (videoRef.current) {
-      // Toggle the muted property of the video element
       videoRef.current.muted = !videoRef.current.muted;
-      // Update the state to reflect the change
       setIsMuted(!isMuted);
     }
   };
@@ -48,29 +42,26 @@ const HeroSection = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center text-center px-6 py-20 overflow-hidden"
     >
-      {/* Background Video & Overlay */}
       <div className="absolute top-0 left-0 w-full h-full z-0">
         <video
-          ref={videoRef} // <-- Attach the ref to the video element
+          ref={videoRef}
           src="/hero-video6.mp4"
           autoPlay
           loop
-          muted // <-- Start muted is REQUIRED for autoplay
+          muted
           playsInline
           className="w-full h-full object-cover"
         ></video>
         <div className="absolute inset-0 bg-black/60"></div>
       </div>
 
-      {/* Animated Content (remains the same) */}
       <motion.div
         className="relative z-10 text-white"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* === HEADING UPDATED HERE === */}
-        <motion.h1 
+        <motion.h1
           className="text-4xl md:text-6xl font-extrabold font-montserrat mb-4 leading-tight"
           variants={itemVariants}
         >
@@ -78,7 +69,7 @@ const HeroSection = () => {
           <span className="text-orange-400">JLY International</span>
         </motion.h1>
 
-        <motion.p 
+        <motion.p
           className="text-lg md:text-xl font-roboto max-w-3xl mx-auto mb-8"
           variants={itemVariants}
         >
@@ -94,7 +85,7 @@ const HeroSection = () => {
             whileTap={{ scale: 0.95 }}
           >
             <Link
-              to="/auth"
+              to="/membership" // <-- UPDATED
               className="block bg-orange-500 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-orange-600 transition-colors duration-300"
             >
               Get Started
@@ -114,7 +105,6 @@ const HeroSection = () => {
         </motion.div>
       </motion.div>
 
-      {/* Mute/Unmute Button */}
       <button
         onClick={toggleMute}
         className="absolute bottom-5 right-5 z-20 bg-black/30 text-white p-3 rounded-full hover:bg-black/50 transition-colors"

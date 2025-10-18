@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
 
-// A reusable component for sections with parallax backgrounds
+// This is your excellent reusable component for sections with parallax backgrounds
 const ParallaxSection = ({ imageUrl, children }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -66,6 +66,13 @@ const ServicesPage = () => {
                 <li>Integrated network of expert service providers</li>
                 <li>Economical, transparent, and professional process</li>
             </ul>
+            {/* --- NEW LINK ADDED HERE --- */}
+            <Link 
+                to="/investment-opportunities"
+                className="inline-flex items-center mt-8 font-bold text-orange-400 hover:text-orange-300 transition-colors text-lg"
+            >
+                Explore Opportunities <FaArrowRight className="ml-2" />
+            </Link>
           </div>
         </div>
       </ParallaxSection>
@@ -84,6 +91,13 @@ const ServicesPage = () => {
                 <li>Focus on quality and strategic alignment</li>
                 <li>Comprehensive and cost-effective solutions</li>
             </ul>
+             {/* --- NEW LINK ADDED HERE --- */}
+            <Link 
+                to="/wealth-confluence"
+                className="inline-flex items-center mt-8 font-bold text-orange-400 hover:text-orange-300 transition-colors text-lg"
+            >
+                Access the Platform <FaArrowRight className="ml-2" />
+            </Link>
           </div>
         </div>
       </ParallaxSection>
@@ -98,7 +112,7 @@ const ServicesPage = () => {
              In a landscape where crypto fraud is rising, we offer specialized fund recovery services to help victims reclaim stolen assets. Our deep understanding of blockchain provides the best chance to recover what's yours.
             </p>
             <Link
-                to="/contact" // Update this link to your contact or form page
+                to="/contact"
                 className="inline-flex items-center bg-orange-500 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-orange-600 transition-transform transform hover:scale-105"
             >
                 Initiate a Recovery Case <FaArrowRight className="ml-2" />
@@ -110,4 +124,4 @@ const ServicesPage = () => {
   );
 };
 
-export default ServicesPage;
+export  default ServicesPage;

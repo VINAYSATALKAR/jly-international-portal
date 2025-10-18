@@ -5,12 +5,38 @@ import { FaShieldAlt, FaRocket, FaCheckCircle, FaTimes } from 'react-icons/fa';
 import ProfileCard from '../components/ProfileCard';
 
 const teamMembers = [
-    { name: "Steven Lee", title: "Chairman", imageUrl: "/images/team-steven-lee.jpg", bio: "Steven Lee is a highly respected figure..." },
-    { name: "Jocelyn Yambao", title: "Founder & COO", imageUrl: "/images/team-jocelyn-yambao.jpg", bio: "Jocelyn is a highly accomplished executive..." },
-    { name: "Bernard Picot", title: "Co-Founder & CRO", imageUrl: "/images/team-bernard-picot.jpg", bio: "Bernard brings over 25 years of success..." },
-    { name: "Kelley Brakstad", title: "Director of Organizational Effectiveness", imageUrl: "/images/team-kelley-brakstad.jpg", bio: "Kelley Brakstad is a seasoned Business and Leadership Advisor..." },
-    { name: "Ehmi Leyn Pineda", title: "Social Operations Manager", imageUrl: "/images/team-ehmi-leyn-pineda.jpg", bio: "Ehmi Leyn, is a seasoned graphic and digital content creator..." }
+    { 
+      name: "Jocelyn Yambao", 
+      title: "Founder & COO", 
+      imageUrl: "/images/team-jocelyn-yambao.jpg", 
+      bio: "Jocelyn is a highly accomplished executive with a proven track record of success spanning over two decades. Her extensive experience in various business disciplines, including operations, marketing, sales, logistics, manufacturing, distribution, and finance, has established her as a dynamic and forward-thinking business leader. She specializes in driving organizational growth, enhancing profitability, and elevating customer satisfaction through strategic initiatives and process improvements. With a keen eye for detail and a talent for strategic planning, she navigates complex business environments with precision, identifying opportunities for growth and developing tailored strategies for success in today's fast-paced and ever-changing landscape. Her leadership style is marked by a profound commitment to collaboration, innovation, and excellence. Beyond her professional achievements, she is known for her strong ethical values and dedication to corporate social responsibility, actively contributing to initiatives that promote community welfare and sustainable practices." 
+    },
+    { 
+      name: "Bernard Picot", 
+      title: "Chief Revenue Officer", // <-- UPDATED
+      imageUrl: "/images/team-bernard-picot.jpg", 
+      bio: "Bernard brings over 25 years of success leading global sales, marketing, business development, product marketing, design, funding, and operations across diverse high-tech ecosystems. A tactical growth expert and technologist, he has a proven track record of taking new products to market, scaling teams, exceeding quotas, and breaking sales records. He excels in executing go-to-market strategies, driving revenue growth, and fostering cohesive, high-performing teams. Career highlights include generating $300M+ in revenue, launching 15+ breakthrough products globally, and scaling organizations from inception to profitability while doubling annual revenues. Bernard’s deep expertise spans a wide range of industries, including hardware/software components, edge and wireless networking, wearable devices, IoT, AI (NLP/AGI/ML/LLM), SaaS, search engines, life sciences, renewable energy, telemedicine, and medical devices. His experience encompasses both B2B and B2C markets, with a strong focus on direct, OEM, and channel sales at a global scale. He has held key roles at leading companies, including Dell Computers, CompuAdd Computer Corporation, IBM/Ambra, Honeywell, and Proxim Wireless, as well as multiple startups in disruptive technology sectors." 
+    },
+    {
+      name: "Amit Srivastava", // <-- ADDED BACK
+      title: "Chief Technology Officer",
+      imageUrl: "/images/team-amit-srivastava.jpg",
+      bio: "Amit Srivastava holds a Batcheler’s Degree in Electronics & Telecommunication Engineering and a master’s in business administration. He began his career at IBM, where he spent 12 years as an Operation Manager, leading a team of engineers specialized in Networking, Server Management, Cyber Security, Big Data analysis, and Artificial Intelligence. He later worked as a Fiber Optics engineer with UK-based company, TalkTalk overseeing Fiber Optics operations in the Greater London area, covering Essex in the Northeast, Kent in the South, Surrey, and Berkshire."
+    },
+    { 
+      name: "Kelley Brakstad", 
+      title: "Director of Organizational Effectiveness", 
+      imageUrl: "/images/team-kelley-brakstad.jpg", 
+      bio: "Kelley Brakstad is a seasoned Business and Leadership Advisor with 18 years of global corporate HR experience, specializing in helping startups and small businesses scale effectively. With expertise in HR processes, leadership development, and strategic coaching, Kelley equips organizations to build high-performing teams and attract investors for sustainable growth. As a former HR Advisor for a rapidly scaling Asian startup, Kelley refined HR systems and aligned leadership strategies to support organizational expansion. Her global experience provides her with a unique perspective on navigating the complexities of scaling businesses while maintaining a strong company culture. Kelley focuses on creating scalable HR frameworks, strengthening leadership capabilities, and driving business excellence, helping businesses thrive in competitive markets." 
+    },
+    { 
+      name: "Ehmi Leyn Pineda", 
+      title: "Social Operations Manager", 
+      imageUrl: "/images/team-ehmi-leyn-pineda.jpg", 
+      bio: "Ehmi Leyn, is a seasoned graphic and digital content creator specializing in image enhancement, branding, and high-quality visual content for online platforms and corporate communications. Proficient in Adobe Creative Cloud, she excels in crafting logo designs, digital art, interactive presentations, and marketing assets that captivate audiences and elevate brand presence. Committed to innovation, Ehmi Leyn integrates AI and generative technologies like Stable Diffusion and ComfyUI into her creative process, exploring cutting-edge solutions to push the boundaries of design and production. Her blend of technical expertise and artistic vision makes her an invaluable asset for businesses looking to enhance their visual identity and digital strategies." 
+    }
 ];
+
 const values = [
   { icon: <FaShieldAlt size={32} />, title: "Integrity", description: "Prioritizing honesty, transparency, and ethical practices." },
   { icon: <FaRocket size={32} />, title: "Client Success", description: "Aligning our services with your goals for measurable results." },
@@ -27,12 +53,10 @@ const AboutPage = () => {
     offset: ["start start", "end end"] 
   });
   
-  // Adjusted percentage for better end-positioning
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]); 
 
   return (
     <>
-      {/* Slide 1: Introduction */}
       <motion.section 
         className="relative h-screen w-full flex items-center justify-center text-white"
         style={{ backgroundImage: 'url(/images/who.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
@@ -44,7 +68,6 @@ const AboutPage = () => {
         </div>
       </motion.section>
 
-      {/* Slide 2: Mission & Vision */}
       <section 
         className="relative h-screen w-full flex items-center justify-center text-white"
         style={{ backgroundImage: 'url(/images/mission.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
@@ -62,7 +85,6 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Slide 3: Core Values */}
        <section 
         className="relative h-screen w-full flex flex-col items-center justify-center text-white"
         style={{ backgroundImage: 'url(/images/values.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
@@ -82,9 +104,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Slide 4: Horizontal Scrolling Team Section */}
       <section ref={teamSectionRef} className="relative h-[300vh] bg-gray-900">
-        {/* === FIX IS HERE: removed "items-center" === */}
         <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
             <div className="text-center px-6 mb-12">
                 <h2 className="text-4xl md:text-5xl font-extrabold text-white font-montserrat">Meet the Team</h2>
@@ -97,7 +117,6 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Bio Modal (remember to fill this in) */}
       <AnimatePresence>
         {selectedMember && (
           <motion.div
