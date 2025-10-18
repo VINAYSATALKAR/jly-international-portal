@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import About from "./pages/AboutPage"; // Assuming you renamed About to AboutPage
-import Services from "./pages/ServicesPage"; // Assuming you renamed Services to ServicesPage
+import Services from "./pages/ServicesPAge"; // Assuming you renamed Services to ServicesPage
 import Projects from "./pages/ProjectsPage";
 import Events from "./pages/EventsPage";
 import Membership from "./pages/MembershipPage";
